@@ -230,6 +230,26 @@
   .ovr{display:inline-block;font-family:'Courier New',monospace;font-size:10px;
     letter-spacing:.1em;text-transform:uppercase;color:var(--amber);
     border:1px dashed var(--hl-5);border-radius:4px;padding:2px 7px;margin-left:6px;}
+  /* ---------- calendar export ---------- */
+  details.cal{margin:9px 0 0;border:1px solid var(--edge);border-radius:7px;
+    background:var(--tint-1);}
+  details.cal > summary{cursor:pointer;padding:10px 12px;font-size:12.5px;
+    color:var(--muted);min-height:44px;display:flex;align-items:center;}
+  details.cal[open] > summary{border-bottom:1px solid var(--edge);color:var(--text);}
+  .cal-body{padding:12px;}
+  .cal-body select{background:var(--well-2);color:var(--text);border:1px solid var(--edge-2);
+    border-radius:6px;padding:9px 8px;font-size:15px;font-family:inherit;min-height:44px;
+    max-width:100%;}
+  .cal-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px;}
+  .cal-btns button,.cal-btns a{flex:1 1 auto;min-height:44px;border-radius:6px;
+    font-family:inherit;font-size:14px;cursor:pointer;padding:11px 14px;text-align:center;
+    text-decoration:none;display:flex;align-items:center;justify-content:center;}
+  .btn-ics{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);}
+  .btn-gcal{background:none;color:var(--accent);border:1px solid var(--edge-2);}
+  .btn-gcal:hover{border-color:var(--accent);}
+  .cal-none{font-size:12.5px;color:var(--muted);}
+  .cal-note{font-size:11.5px;color:var(--muted);margin:10px 0 0;}
+
   .exportbox{width:100%;min-height:110px;background:var(--well-2);color:var(--text);
     border:1px solid var(--edge-2);border-radius:6px;padding:10px;font-size:12px;
     font-family:'Courier New',monospace;margin-top:8px;display:none;}
@@ -773,6 +793,207 @@ function exportOverrides(){
   return 'const OVERRIDES_BAKED = ' + JSON.stringify(out, null, 2) + ';';
 }
 
+
+/* ============================================================
+   Calendar export
+   ------------------------------------------------------------
+   One .ics per event, carrying an RRULE so it recurs by itself
+   rather than as a single dead entry. Apple Calendar, Google and
+   Outlook all import this format. The Google link below is a
+   convenience for people who prefer the web flow; it cannot carry
+   a reminder, which is why the .ics is the primary control.
+
+   Server time is GMT-2 with no DST, so every stamp is written in
+   plain UTC and no VTIMEZONE block is needed.
+   ============================================================ */
+const BYDAY = ['SU','MO','TU','WE','TH','FR','SA'];
+const REMINDERS = [
+  ['','No reminder'], ['0','At start time'], ['5','5 minutes before'],
+  ['10','10 minutes before'], ['15','15 minutes before'], ['30','30 minutes before'],
+  ['60','1 hour before'], ['120','2 hours before'], ['1440','1 day before']
+];
+const REM_KEY = 'lpadmin-reminders';
+let REMS = {};
+function loadRems(){
+  try{ return JSON.parse(localStorage.getItem(REM_KEY) || '{}'); }catch(e){ return {}; }
+}
+function saveRems(){
+  try{ localStorage.setItem(REM_KEY, JSON.stringify(REMS)); }catch(e){}
+}
+function remFor(id){ return (id in REMS) ? REMS[id] : '30'; }
+
+function icsEsc(v){
+  return String(v).replace(/\\/g,'\\\\').replace(/;/g,'\\;')
+                  .replace(/,/g,'\\,').replace(/\r?\n/g,'\\n');
+}
+/* RFC 5545 caps a content line at 75 OCTETS, not characters. The em dash
+   in these strings is three bytes in UTF-8, so folding on character count
+   silently overruns. Measure bytes, and never split a surrogate pair. */
+function utf8Len(ch){
+  const c = ch.codePointAt(0);
+  return c < 0x80 ? 1 : c < 0x800 ? 2 : c < 0x10000 ? 3 : 4;
+}
+function icsFold(line){
+  const out = [];
+  let cur = '', bytes = 0, limit = 73;   // 73 + CRLF stays inside 75
+  for(const ch of line){
+    const n = utf8Len(ch);
+    if(bytes + n > limit){
+      out.push(cur);
+      cur = ' ' + ch; bytes = 1 + n; limit = 73;
+    } else {
+      cur += ch; bytes += n;
+    }
+  }
+  if(cur) out.push(cur);
+  return out.join('\r\n');
+}
+function utcStamp(dt){
+  return dt.getUTCFullYear()+pad(dt.getUTCMonth()+1)+pad(dt.getUTCDate())+'T'+
+         pad(dt.getUTCHours())+pad(dt.getUTCMinutes())+'00Z';
+}
+function rruleFor(w){
+  if(w.type === 'weekly')   return 'FREQ=WEEKLY;BYDAY='+BYDAY[w.day];
+  if(w.type === 'daily')    return 'FREQ=DAILY';
+  if(w.type === 'interval') return 'FREQ=DAILY;INTERVAL='+w.days;
+  if(w.type === 'span' && w.days && w.days.length)
+    return 'FREQ=WEEKLY;BYDAY='+w.days.map(function(i){ return BYDAY[i]; }).join(',');
+  return null;
+}
+/* first future occurrence of a given HH:MM under this pattern */
+function firstStart(w, t){
+  if(w.type === 'weekly')   return nextWeekly(w.day, t);
+  if(w.type === 'daily')    return nextDaily(t);
+  if(w.type === 'interval') return nextInterval(w.anchor, t, w.days);
+  if(w.type === 'span'){
+    const cands = w.days.map(function(i){ return nextWeekly(i, t); }).filter(Boolean);
+    if(!cands.length) return null;
+    return new Date(Math.min.apply(null, cands.map(function(x){ return x.getTime(); })));
+  }
+  return null;
+}
+function calEvents(d){
+  const w = effWhen(d);
+  const times = (w.times || []).filter(Boolean);
+  if(!times.length || !rruleFor(w)) return [];
+  return times.map(function(t){
+    const start = firstStart(w, t);
+    if(!start) return null;
+    return {t:t, start:start, end:new Date(start.getTime()+30*60000), rrule:rruleFor(w)};
+  }).filter(Boolean);
+}
+function calDescription(d){
+  const owners = (d.owners||[]).map(function(k){ return PEOPLE[k].name; }).join(' & ');
+  const backup = (d.backups||[]).map(function(k){ return PEOPLE[k].name; }).join(' & ');
+  let txt = 'Kingdom #217 duty. Owner: '+(owners||'unassigned')+'.';
+  if(backup) txt += ' Backup: '+backup+'.';
+  if(d.positions) txt += ' Seats to fill: '+d.positions.map(function(x){ return x.n; }).join(', ')+'.';
+  if(d.acts && d.acts.length){
+    txt += '\n\nActions:\n' + d.acts.map(function(a){ return '\u2022 '+a.t; }).join('\n');
+  }
+  txt += '\n\nTimes are server time (GMT-2). Duration is a nominal 30 minutes \u2014 the game does not publish one.';
+  return txt;
+}
+function buildICS(d){
+  const evs = calEvents(d);
+  if(!evs.length) return null;
+  const rem = remFor(d.id);
+  const stamp = utcStamp(new Date());
+  const desc = calDescription(d);
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0',
+    'PRODID:-//Lord of the Rats//Leadership Board 217//EN','CALSCALE:GREGORIAN'];
+  evs.forEach(function(e, i){
+    lines.push('BEGIN:VEVENT');
+    lines.push('UID:'+d.id+'-'+i+'-'+e.t.replace(':','')+'@lotr217');
+    lines.push('DTSTAMP:'+stamp);
+    lines.push('DTSTART:'+utcStamp(e.start));
+    lines.push('DTEND:'+utcStamp(e.end));
+    lines.push('RRULE:'+e.rrule);
+    lines.push('SUMMARY:'+icsEsc('#217 \u2014 '+d.title));
+    lines.push('DESCRIPTION:'+icsEsc(desc));
+    if(rem !== ''){
+      lines.push('BEGIN:VALARM','ACTION:DISPLAY',
+        'DESCRIPTION:'+icsEsc(d.title),
+        'TRIGGER:'+(rem === '1440' ? '-P1D' : (rem === '0' ? 'PT0M' : '-PT'+rem+'M')),
+        'END:VALARM');
+    }
+    lines.push('END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  return lines.map(icsFold).join('\r\n')+'\r\n';
+}
+function gcalURL(d){
+  const evs = calEvents(d);
+  if(!evs.length) return null;
+  const e = evs[0];
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'+
+    '&text='+encodeURIComponent('#217 \u2014 '+d.title)+
+    '&dates='+utcStamp(e.start)+'/'+utcStamp(e.end)+
+    '&recur='+encodeURIComponent('RRULE:'+e.rrule)+
+    '&details='+encodeURIComponent(calDescription(d))+
+    '&ctz=UTC';
+}
+
+function calendarHTML(d){
+  const evs = calEvents(d);
+  if(!evs.length){
+    return '<details class="cal"><summary>Add to my calendar</summary><div class="cal-body">'+
+      '<p class="cal-none">This one has no day and time set yet, so there is nothing to put in '+
+      'a calendar. Set one under <b>Adjust day &amp; time</b> above and this will fill in.</p>'+
+      '</div></details>';
+  }
+  const many = evs.length > 1;
+  return '<details class="cal"><summary>Add to my calendar</summary><div class="cal-body">'+
+    '<span class="sched-lab">Reminder</span>'+
+    '<select data-rem="'+d.id+'" aria-label="Reminder for '+d.title+'">'+
+      selOpts(REMINDERS, remFor(d.id))+'</select>'+
+    '<div class="cal-btns">'+
+      '<button type="button" class="btn-ics" data-ics="'+d.id+'">Download .ics</button>'+
+      '<a class="btn-gcal" data-gcal="'+d.id+'" href="'+gcalURL(d)+
+        '" target="_blank" rel="noopener">Add in Google</a>'+
+    '</div>'+
+    '<p class="cal-note">The <b>.ics</b> file carries the repeat and the reminder, and imports '+
+    'into Apple Calendar, Google Calendar and Outlook. '+
+    (many ? 'This event has '+evs.length+' slots \u2014 the file contains all of them, the Google '+
+            'link only the first. ' : '')+
+    'The <b>Google link</b> cannot carry a reminder; Google applies your own default instead. '+
+    'Entries land at server time converted to your device\u2019s zone, and are 30 minutes long '+
+    'because the game does not publish a duration.</p>'+
+    '<p class="cal-note">If leadership moves this event, calendar entries already added '+
+    '<b>do not follow</b>. Re-download after a change.</p>'+
+    '<p class="cal-note">Kingdom #217 does not observe daylight saving. If your country does, '+
+    'these entries will shift by an hour in your calendar when your clocks change — that is '+
+    'correct, not a fault. The server time stays the same; your local time is what moved.</p>'+
+    '</div></details>';
+}
+
+function bindCalendars(){
+  document.querySelectorAll('[data-rem]').forEach(function(sel){
+    sel.addEventListener('change', function(){
+      const id = sel.getAttribute('data-rem');
+      REMS[id] = sel.value; saveRems();
+    });
+  });
+  document.querySelectorAll('[data-ics]').forEach(function(b){
+    b.addEventListener('click', function(){
+      const id = b.getAttribute('data-ics');
+      const d = DUTIES.find(function(x){ return x.id === id; });
+      const ics = buildICS(d);
+      if(!ics) return;
+      try{
+        const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = '217-'+id+'.ics';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+      }catch(e){
+        window.location.href = 'data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+      }
+    });
+  });
+}
+
 function whenBlock(d){
   const w = effWhen(d);
   if(w.type === 'unknown'){
@@ -858,6 +1079,7 @@ function renderDuties(){
           return '<div class="seat"><b>'+s.n+'</b> &mdash; '+s.d+'</div>';
         }).join('')+'</div>' : '')+
       editorHTML(d)+
+      calendarHTML(d)+
       '<p class="acts-head">Actions'+(d.draft?' &mdash; draft, confirm before relying on it':'')+'</p>'+
       '<ul class="acts">'+acts+'</ul>'+
     '</article>';
@@ -1014,9 +1236,11 @@ toTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smo
 function renderAll(){
   renderDuties();
   bindEditors();
+  bindCalendars();
   renderPeople();
   renderWeek();
 }
+REMS = loadRems();
 OVERRIDES = loadOverrides();
 saveOverrides();               // drops any week-scoped overrides that have expired
 renderAll();
