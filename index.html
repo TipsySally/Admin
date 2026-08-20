@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3QgeD0iMTAiIHk9IjEyIiB3aWR0aD0iNDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSIjMTQxODEwIiBzdHJva2U9IiNmMGI2NGEiIHN0cm9rZS13aWR0aD0iNCIvPjxyZWN0IHg9IjIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHJ4PSI0IiBmaWxsPSIjZjBiNjRhIi8+PHJlY3QgeD0iMjAiIHk9IjI4IiB3aWR0aD0iMjQiIGhlaWdodD0iNSIgcng9IjIuNSIgZmlsbD0iIzljYzIzZiIvPjxyZWN0IHg9IjIwIiB5PSIzOSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjUiIHJ4PSIyLjUiIGZpbGw9IiNmMGI2NGEiLz48cmVjdCB4PSIyMCIgeT0iNTAiIHdpZHRoPSIxNSIgaGVpZ2h0PSI1IiByeD0iMi41IiBmaWxsPSIjZjBiNjRhIi8+PC9zdmc+Cg==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3QgeD0iMTAiIHk9IjEyIiB3aWR0aD0iNDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSIjMTQxODEwIiBzdHJva2U9IiNmMGI2NGEiIHN0cm9rZS13aWR0aD0iNCIvPjxyZWN0IHg9IjIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHJ4PSI0IiBmaWxsPSIjZjBiNjRhIi8+PHJlY3QgeD0iMjAiIHk9IjI4IiB3aWR0aD0iMjQiIGhlaWdodD0iNSIgcng9IjIuNSIgZmlsbD0iIzljYzIzZiIvPjxyZWN0IHg9IjIwIiB5PSIzOSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjUiIHJ4PSIyLjUiIGZpbGw9IiNmMGI2NGEiLz48cmVjdCB4PSIyMCIgeT0iNTAiIHdpZHRoPSIxNSIgaGVpZ2h0PSI1IiByeD0iMi41IiBmaWxsPSIjZjBiNjRhIi8+PC9zdmc+Cg==">
+<title>Leadership Board — Kingdom #217</title>
+<style>
+  :root{
+    --bg:#0a0c08; --panel:#141810; --panel-2:#1d2317; --panel-3:#0e1109;
+    --line:#3a4229; --text:#e2e5d4; --muted:#9aa084;
+    --green:#9cc23f; --green-bright:#d2f06a;
+    --red:#a8392c; --red-bright:#ef6e5b; --amber:#f0b64a;
+    --tint-1:rgba(255,255,255,.035); --tint-2:rgba(255,255,255,.065); --tint-3:rgba(255,255,255,.10);
+    --edge:rgba(255,255,255,.15); --edge-2:rgba(255,255,255,.20); --edge-3:rgba(255,255,255,.28);
+    --well-1:rgba(0,0,0,.20); --well-2:rgba(0,0,0,.32); --shadow:rgba(0,0,0,.45);
+    --fab-bg:rgba(11,13,9,.92);
+    --hl-1:rgba(255,196,0,.045); --hl-2:rgba(255,196,0,.08); --hl-3:rgba(255,196,0,.13);
+    --hl-4:rgba(255,196,0,.22); --hl-5:rgba(255,196,0,.40);
+    --ok-1:rgba(143,176,62,.08); --ok-2:rgba(143,176,62,.16);
+    --bad-1:rgba(168,57,44,.07); --bad-2:rgba(168,57,44,.13);
+    --info-1:rgba(120,190,255,.07); --info-2:rgba(120,190,255,.24);
+    --accent:#63cfe0; --accent-strong:#8fe4f0; --accent-tint:rgba(99,207,224,.14);
+    --on-accent:#080a06; --info-text:#9fd0ff; --err-text:#ffb3b3;
+  }
+  html[data-theme="light"]{
+    --bg:#f6f3e9; --panel:#e9e4d3; --panel-2:#d5ccb2; --panel-3:#f0ecdf;
+    --line:#b3a68a; --text:#17140e; --muted:#5a5342;
+    --green:#41631f; --green-bright:#2b4614;
+    --red:#8d2a18; --red-bright:#6f2013; --amber:#734508;
+    --tint-1:rgba(60,48,24,.055); --tint-2:rgba(60,48,24,.095); --tint-3:rgba(60,48,24,.15);
+    --edge:rgba(60,48,24,.24); --edge-2:rgba(60,48,24,.30); --edge-3:rgba(60,48,24,.42);
+    --well-1:rgba(60,48,24,.07); --well-2:rgba(60,48,24,.11); --shadow:rgba(60,48,24,.28);
+    --fab-bg:rgba(246,243,233,.94);
+    --hl-1:rgba(140,96,10,.06); --hl-2:rgba(140,96,10,.10); --hl-3:rgba(140,96,10,.16);
+    --hl-4:rgba(140,96,10,.26); --hl-5:rgba(140,96,10,.44);
+    --ok-1:rgba(76,107,43,.12); --ok-2:rgba(76,107,43,.24);
+    --bad-1:rgba(149,48,31,.10); --bad-2:rgba(149,48,31,.18);
+    --info-1:rgba(30,86,120,.10); --info-2:rgba(30,86,120,.26);
+    --accent:#0e5f74; --accent-strong:#0a4657; --accent-tint:rgba(14,95,116,.13);
+    --on-accent:#f6f3e8; --info-text:#1e5678; --err-text:#8c2418;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:
+      radial-gradient(ellipse at top left, var(--ok-1), transparent 60%),
+      radial-gradient(ellipse at bottom right, var(--bad-1), transparent 60%),
+      var(--bg);
+    min-height:100vh; line-height:1.55; font-size:15px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 90px;}
+
+  /* ---------- header ---------- */
+  header.top{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px;
+    padding-right:112px;}
+  .eyebrow{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);}
+  h1{margin:4px 0 2px;font-size:25px;letter-spacing:.01em;}
+  .sub{color:var(--muted);font-size:13px;margin:0;}
+  .clocks{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .clock{background:var(--tint-1);border:1px solid var(--edge);border-radius:8px;
+    padding:7px 11px;min-width:150px;}
+  .clock-label{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);}
+  .clock-value{font-family:'Courier New',monospace;font-size:19px;color:var(--green-bright);
+    letter-spacing:.04em;}
+  .clock-date{font-size:11px;color:var(--muted);}
+
+  #themeBtn{position:fixed;top:12px;right:12px;z-index:60;background:var(--fab-bg);
+    border:1px solid var(--edge-2);color:var(--text);border-radius:8px;padding:7px 11px;
+    font-size:12px;font-family:'Courier New',monospace;letter-spacing:.08em;cursor:pointer;
+    box-shadow:0 2px 10px var(--shadow);}
+  #themeBtn:hover{border-color:var(--edge-3);}
+  #toTop{position:fixed;bottom:14px;right:14px;z-index:60;background:var(--fab-bg);
+    border:1px solid var(--edge-2);color:var(--text);border-radius:8px;padding:8px 12px;
+    font-size:12px;cursor:pointer;display:none;box-shadow:0 2px 10px var(--shadow);}
+
+  /* ---------- private-page banner ---------- */
+  .private{background:var(--bad-1);border:1px solid var(--red);border-left-width:4px;
+    border-radius:6px;padding:10px 13px;margin:0 0 16px;font-size:13px;}
+  .private b{color:var(--red-bright);}
+
+  /* ---------- tabs ---------- */
+  nav.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);
+    margin-bottom:18px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;}
+  nav.tabs::-webkit-scrollbar{display:none;}
+  .tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);
+    padding:11px 15px;font-size:14px;font-family:inherit;cursor:pointer;
+    min-height:44px;white-space:nowrap;flex:0 0 auto;}
+  .tab:hover{color:var(--text);}
+  .tab[aria-selected="true"]{color:var(--accent-strong);border-bottom-color:var(--accent);}
+  .view{display:none;}
+  .view.active{display:block;}
+
+  /* ---------- duty cards ---------- */
+  .duty{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:14px 15px;margin-bottom:14px;}
+  .duty-head{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;
+    justify-content:space-between;}
+  .duty h3{margin:0;font-size:17px;}
+  .owners{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0 0;}
+  .who{display:inline-flex;align-items:baseline;gap:6px;background:var(--tint-2);
+    border:1px solid var(--edge);border-radius:20px;padding:3px 11px;font-size:13px;}
+  .who .ign{color:var(--muted);font-size:11px;font-family:'Courier New',monospace;}
+  .who.backup{background:none;border-style:dashed;}
+  .who.backup::before{content:'backup';font-size:9px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin-right:2px;}
+
+  .tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.11em;
+    text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap;}
+  .tag.ok{background:var(--green);color:var(--on-accent);}
+  .tag.admin{background:var(--tint-3);color:var(--text);border:1px solid var(--edge-2);}
+  .tag.pending{background:none;color:var(--muted);border:1px dashed var(--edge-3);}
+
+  .when{margin:11px 0 0;padding:9px 11px;background:var(--well-1);border-radius:7px;
+    border-left:3px solid var(--edge-2);font-size:13.5px;}
+  .when.live{border-left-color:var(--green);}
+  .when.unknown{border-left-color:var(--amber);}
+  .when .srv{font-family:'Courier New',monospace;color:var(--green-bright);}
+  .when .lcl{font-family:'Courier New',monospace;color:var(--accent-strong);}
+  .when .lbl{color:var(--muted);font-size:11px;font-family:'Courier New',monospace;
+    letter-spacing:.11em;text-transform:uppercase;display:block;margin-bottom:2px;}
+
+  .acts{margin:12px 0 0;padding:0;list-style:none;}
+  .acts li{display:flex;gap:11px;align-items:flex-start;padding:8px 0;
+    border-top:1px solid var(--tint-1);min-height:44px;}
+  .acts li:first-child{border-top:none;}
+  .acts input[type=checkbox]{margin-top:3px;flex:0 0 auto;width:22px;height:22px;
+    accent-color:var(--green);cursor:pointer;}
+  .acts label{cursor:pointer;font-size:13.5px;padding:3px 0;flex:1;}
+  .acts .cue{color:var(--muted);font-size:11.5px;font-family:'Courier New',monospace;
+    letter-spacing:.05em;display:block;}
+  .acts li.done label{color:var(--muted);text-decoration:line-through;}
+  .acts-head{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin:13px 0 0;}
+
+  .warn{margin:11px 0 0;padding:9px 11px;background:var(--hl-2);
+    border:1px solid var(--hl-4);border-radius:7px;font-size:12.5px;}
+  .warn b{color:var(--amber);}
+  .policy{margin:11px 0 0;padding:9px 11px;background:var(--info-1);
+    border:1px solid var(--info-2);border-radius:7px;font-size:12.5px;}
+  .policy b{color:var(--info-text);}
+
+  /* ---------- owner view ---------- */
+  .person{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:13px 15px;margin-bottom:12px;}
+  .person h3{margin:0 0 2px;font-size:16px;}
+  .person .ign-line{font-family:'Courier New',monospace;font-size:12px;color:var(--muted);
+    margin-bottom:8px;}
+  .person ul{margin:0;padding-left:19px;font-size:13.5px;}
+  .person li{padding:2px 0;}
+  .person li .sec{color:var(--muted);font-size:12px;}
+
+  /* ---------- week view ---------- */
+  .weekgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+  .daycol{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:11px 12px;}
+  .daycol.today{border-color:var(--green);background:var(--panel-2);}
+  .daycol h4{margin:0 0 2px;font-size:14px;}
+  .daycol .dmark{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--green-bright);}
+  .daycol ul{margin:8px 0 0;padding:0;list-style:none;font-size:12.5px;}
+  .daycol li{padding:5px 0;border-top:1px solid var(--tint-1);}
+  .daycol li:first-child{border-top:none;}
+  .daycol .t{font-family:'Courier New',monospace;color:var(--accent-strong);font-size:11.5px;}
+  .daycol .o{color:var(--muted);font-size:11px;}
+  .daycol .empty{color:var(--muted);font-size:12px;padding-top:6px;}
+
+  .sec-note{color:var(--muted);font-size:13px;margin:0 0 15px;}
+  h2.vh{font-size:18px;margin:0 0 4px;}
+  .reset-row{margin:16px 0 0;font-size:12px;color:var(--muted);}
+  .reset-row button{background:none;border:1px solid var(--edge-2);color:var(--muted);
+    border-radius:6px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;}
+  .reset-row button:hover{color:var(--text);border-color:var(--edge-3);}
+  footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:12px;}
+  footer a{color:var(--accent);}
+
+  /* ---------- positions (seats that must be filled) ---------- */
+  .seats{margin:11px 0 0;padding:9px 11px;background:var(--tint-1);
+    border:1px solid var(--edge);border-radius:7px;}
+  .seats-head{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+  .seat{font-size:13px;padding:3px 0;}
+  .seat b{color:var(--accent-strong);}
+
+  /* ---------- schedule editor ---------- */
+  details.sched{margin:11px 0 0;border:1px solid var(--edge);border-radius:7px;
+    background:var(--tint-1);}
+  details.sched > summary{cursor:pointer;padding:10px 12px;font-size:12.5px;
+    color:var(--muted);min-height:44px;display:flex;align-items:center;}
+  details.sched[open] > summary{border-bottom:1px solid var(--edge);color:var(--text);}
+  .sched-body{padding:12px;}
+  .sched-row{margin-bottom:11px;}
+  .sched-row.hide{display:none;}
+  .sched-lab{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+  .sched-body select,.sched-body input[type=date]{background:var(--well-2);color:var(--text);
+    border:1px solid var(--edge-2);border-radius:6px;padding:9px 8px;font-size:15px;
+    font-family:inherit;min-height:44px;max-width:100%;}
+  .sched-body select:focus,.sched-body input:focus{outline:2px solid var(--accent);
+    outline-offset:1px;}
+  .tslot{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap;}
+  .tslot .colon{font-family:'Courier New',monospace;color:var(--muted);}
+  .tslot .idx{font-family:'Courier New',monospace;font-size:11px;color:var(--muted);
+    width:20px;flex:0 0 auto;}
+  .daybox{display:flex;gap:5px;flex-wrap:wrap;}
+  .daybox label{display:inline-flex;align-items:center;gap:5px;background:var(--tint-2);
+    border:1px solid var(--edge);border-radius:20px;padding:7px 11px;font-size:13px;
+    min-height:44px;cursor:pointer;}
+  .daybox input{width:18px;height:18px;accent-color:var(--green);}
+  .scopebox{display:flex;flex-direction:column;gap:4px;}
+  .scopebox label{display:flex;gap:8px;align-items:flex-start;font-size:13px;
+    padding:6px 0;min-height:44px;cursor:pointer;}
+  .scopebox input{width:20px;height:20px;margin-top:2px;accent-color:var(--green);}
+  .scopebox .sub2{color:var(--muted);font-size:11.5px;display:block;}
+  .sched-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+  .sched-btns button{flex:1 1 auto;min-height:44px;border-radius:6px;font-family:inherit;
+    font-size:14px;cursor:pointer;padding:10px 14px;}
+  .btn-save{background:var(--green);color:var(--on-accent);border:1px solid var(--green);}
+  .btn-reset{background:none;color:var(--muted);border:1px solid var(--edge-2);}
+  .btn-reset:hover{color:var(--text);border-color:var(--edge-3);}
+  .sched-note{font-size:11.5px;color:var(--muted);margin:10px 0 0;}
+  .ovr{display:inline-block;font-family:'Courier New',monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--amber);
+    border:1px dashed var(--hl-5);border-radius:4px;padding:2px 7px;margin-left:6px;}
+  .exportbox{width:100%;min-height:110px;background:var(--well-2);color:var(--text);
+    border:1px solid var(--edge-2);border-radius:6px;padding:10px;font-size:12px;
+    font-family:'Courier New',monospace;margin-top:8px;display:none;}
+
+  /* ============================================================
+     Narrow viewports. Most of the alliance reads this on a phone,
+     so this is the primary layout, not a fallback.
+     ============================================================ */
+  html,body{overflow-x:hidden;}
+  .duty,.person,.daycol,.when,.warn,.policy{overflow-wrap:anywhere;}
+
+  @media (max-width:560px){
+    body{font-size:15.5px;}
+    .wrap{padding:16px 13px 90px;}
+    h1{font-size:21px;}
+    header.top{padding-right:0;}
+    /* theme button moves out of the header's way entirely */
+    #themeBtn{position:static;display:block;width:calc(100% - 26px);
+      margin:13px 13px 0;text-align:center;padding:11px;min-height:44px;box-shadow:none;}
+    .clocks{gap:8px;}
+    .clock{flex:1 1 calc(50% - 4px);min-width:0;padding:7px 9px;}
+    .clock-value{font-size:17px;}
+    .weekgrid{grid-template-columns:1fr;}
+    .duty{padding:13px 13px;}
+    .duty-head{gap:7px;}
+    .duty h3{font-size:16px;flex:1 1 100%;}
+    .tag{align-self:flex-start;}
+    #toTop{padding:11px 14px;min-height:44px;}
+    .reset-row button{width:100%;min-height:44px;}
+  }
+  @media (max-width:340px){
+    .clock{flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<button id="themeBtn" type="button">THEME: AUTO</button>
+<button id="toTop" type="button">&uarr; Top</button>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Lord of the Rats &middot; Kingdom #217 &middot; leadership only</div>
+  <h1>Leadership Board</h1>
+  <p class="sub">Who owns which event, what they do, and when it fires. Times are server time (GMT&minus;2, no DST) converted to this device's clock.</p>
+  <div class="clocks">
+    <div class="clock"><span class="clock-label">Server</span>
+      <div class="clock-value" id="srvClock">--:--:--</div>
+      <div class="clock-date" id="srvDate">&nbsp;</div></div>
+    <div class="clock"><span class="clock-label">Your device</span>
+      <div class="clock-value" id="lclClock">--:--:--</div>
+      <div class="clock-date" id="lclDate">&nbsp;</div></div>
+  </div>
+</header>
+
+<div class="private">
+  <b>Not a public page.</b> It is unlisted, not private &mdash; anyone with the URL can open it, and
+  GitHub Pages has no login. Keep it out of world chat, and do not put anything here that would
+  cause harm if a rival alliance read it.
+</div>
+
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" data-view="v-duties" aria-selected="true">Duties</button>
+  <button class="tab" role="tab" data-view="v-people" aria-selected="false">By person</button>
+  <button class="tab" role="tab" data-view="v-week" aria-selected="false">Week</button>
+</nav>
+
+<section class="view active" id="v-duties">
+  <h2 class="vh">Duty roster</h2>
+  <p class="sec-note">One card per assignment. Tick boxes are a personal to-do &mdash; they save to
+    <b>this browser only</b> and reset each server week. Nobody else sees them.</p>
+  <div id="dutyList"></div>
+  <div class="reset-row">
+    <button type="button" id="clearChecks">Clear this week's ticks</button>
+    <button type="button" id="exportBtn">Copy overrides for the file</button>
+    <textarea class="exportbox" id="exportBox" readonly></textarea>
+    <p style="margin:8px 0 0">Schedule changes you save live in this browser. To make them the
+      default for everyone, paste the text above over <code>const OVERRIDES_BAKED</code> near the
+      top of the file's script and re-upload it to GitHub.</p>
+  </div>
+</section>
+
+<section class="view" id="v-people">
+  <h2 class="vh">By person</h2>
+  <p class="sec-note">The same roster, grouped by who carries it. Use this to spot single points of
+    failure &mdash; anyone holding a duty with no backup is a gap if they go inactive.</p>
+  <div id="peopleList"></div>
+</section>
+
+<section class="view" id="v-week">
+  <h2 class="vh">Server week</h2>
+  <p class="sec-note">Only items with a <b>confirmed</b> server day appear here. Events whose schedule
+    is still unknown are listed on the Duties tab and deliberately left out of this grid rather than
+    guessed at.</p>
+  <div class="weekgrid" id="weekGrid"></div>
+</section>
+
+<footer>
+  Companion to the <a href="https://tipsysally.github.io/Last-Asylum-Plague-Calendar" target="_blank" rel="noopener">Containment File</a>,
+  which stays the source of truth for game mechanics and schedules. This page holds ownership and
+  process only &mdash; when the two disagree, the Containment File wins.
+</footer>
+
+</div>
+
+<script>
+/* ============================================================
+   Server clock: kingdom #217 runs GMT-2, fixed, no DST.
+   ============================================================ */
+const SERVER_OFFSET_MINUTES = -120;
+const DAY_FULL = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+function serverNow(){
+  const n = new Date();
+  return new Date(n.getTime() + SERVER_OFFSET_MINUTES*60000);
+}
+function pad(n){ return String(n).padStart(2,'0'); }
+function serverWeekday(){ return serverNow().getUTCDay(); }
+
+/* server-local Y/M/D + H:M -> real Date */
+function fromServer(y,m,d,hh,mm){
+  return new Date(Date.UTC(y,m,d,hh,mm) - SERVER_OFFSET_MINUTES*60000);
+}
+function localHM(date){ return pad(date.getHours())+':'+pad(date.getMinutes()); }
+function localDayName(date){ return DAY_FULL[date.getDay()]; }
+
+/* next occurrence of a given server weekday + HH:MM */
+function nextWeekly(weekday, hhmm){
+  const [hh,mm] = hhmm.split(':').map(Number);
+  const s = serverNow();
+  for(let i=0;i<8;i++){
+    const cand = fromServer(s.getUTCFullYear(), s.getUTCMonth(), s.getUTCDate()+i, hh, mm);
+    const candServer = new Date(cand.getTime() + SERVER_OFFSET_MINUTES*60000);
+    if(candServer.getUTCDay() === weekday && cand.getTime() > Date.now()) return cand;
+  }
+  return null;
+}
+/* next occurrence of an interval-in-days schedule anchored on a server date */
+function nextInterval(anchorISO, hhmm, days){
+  const [ay,am,ad] = anchorISO.split('-').map(Number);
+  const [hh,mm] = hhmm.split(':').map(Number);
+  let t = fromServer(ay, am-1, ad, hh, mm);
+  const step = days*86400000;
+  while(t.getTime() <= Date.now()) t = new Date(t.getTime()+step);
+  return t;
+}
+/* next daily HH:MM server */
+function nextDaily(hhmm){
+  const [hh,mm] = hhmm.split(':').map(Number);
+  const s = serverNow();
+  let t = fromServer(s.getUTCFullYear(), s.getUTCMonth(), s.getUTCDate(), hh, mm);
+  if(t.getTime() <= Date.now()) t = new Date(t.getTime()+86400000);
+  return t;
+}
+
+/* ============================================================
+   BAKED OVERRIDES
+   ------------------------------------------------------------
+   Anything a leader saves in the browser lives on that device only.
+   To make a change permanent for the whole alliance: open a duty's
+   "Adjust day & time", save it, then use "Copy overrides for the
+   file" at the bottom of the Duties tab and paste the result here,
+   replacing the empty object. Re-upload the file to GitHub.
+   ============================================================ */
+const OVERRIDES_BAKED = {};
+
+/* ============================================================
+   ROSTER — real names to in-game names.
+   Blank ign = not supplied yet. Do not guess these.
+   ============================================================ */
+const PEOPLE = {
+  hannah:  {name:'Hanna',   ign:'Allanie'},
+  rey:     {name:'Rey',     ign:'Dr. Lely'},
+  babs:    {name:'Babs',    ign:'Hellokatzchen'},
+  connor:  {name:'Connor',  ign:'ConnorTwig'},
+  kit:     {name:'Kit',     ign:'Kitterine'},
+  trig:    {name:'Trig',    ign:'Trigger17'},
+  toad:    {name:'Toad',    ign:'WilliamToad'},
+  queen:   {name:'Queen',   ign:'QueenDeathy'},
+  shiney:  {name:'Shiney',  ign:'ShineyImp'}
+};
+
+/* ============================================================
+   DUTIES
+   ------------------------------------------------------------
+   `when` is one of:
+     {type:'weekly',   day:5, times:['18:00','23:00']}
+     {type:'interval', anchor:'2026-07-23', times:['18:30'], days:2}
+     {type:'daily',    times:['00:00']}
+     {type:'span',     days:[1,2,3,4,5,6], text:'...'}   // no single fire time
+     {type:'unknown',  text:'...'}                        // schedule not confirmed
+     {type:'admin',    text:'...'}                        // no game schedule at all
+   Action lists marked draft:true are drawn from the Containment File and from the
+   shape of the event, not from an agreed leadership process. Confirm or replace them.
+   ============================================================ */
+const DUTIES = [
+  {
+    id:'cheese', title:'Cheese Trap', owners:['hannah','rey'],
+    when:{type:'interval', anchor:'2026-07-23', times:['18:30'], days:2},
+    whenNote:'Every 48 hours at 18:30 server. A second occurrence has been seen at 22:00, 22:30 or 00:00 with mixed results and is not confirmed.',
+    acts:[
+      {t:'Post the call 30 minutes before the trap opens', cue:'server 18:00'},
+      {t:'Confirm the trap is set and the rally point is called'},
+      {t:'Chase stragglers in alliance chat once it opens'},
+      {t:'Post the result screenshot afterwards'}
+    ], draft:true
+  },
+  {
+    id:'elixir', title:'Elixir Scramble', owners:['babs','connor'],
+    when:{type:'weekly', day:5, times:['18:00','23:00']},
+    whenNote:'Friday, two windows: 18:00 and 23:00 server.',
+    acts:[
+      {t:'Notice on Thursday that Friday is Elixir day'},
+      {t:'Reminder 30 minutes before each window', cue:'server 17:30 and 22:30'},
+      {t:'Call which window the alliance is committing to'},
+      {t:'Post results and rankings after the second window'}
+    ], draft:true
+  },
+  {
+    id:'trade', title:'Trade Caravan', owners:['kit'],
+    when:{type:'daily', times:[]},
+    whenNote:'Runs daily. The hour is not fixed by the game \u2014 the owner or driver picks it. Set it below so the rest of the alliance can see the same time.',
+    positions:[
+      {n:'Driver', d:'Runs the caravan. Does not have to be the event owner \u2014 the owner\u2019s job is making sure the seat is filled, not sitting in it.'},
+      {n:'VIP', d:'Second seat. Also needs filling before departure.'}
+    ],
+    acts:[
+      {t:'Fill the Driver seat'},
+      {t:'Fill the VIP seat'},
+      {t:'Refresh the rewards until the level is satisfactory', cue:'before departure \u2014 do not launch on a poor roll'},
+      {t:'Post the chosen departure time in chat'},
+      {t:'Remind members to run and defend their own caravans'}
+    ], draft:true
+  },
+  {
+    id:'canyon', title:'Canyon Conquest', owners:['trig'], backups:['shiney'],
+    when:{type:'unknown', text:'Live on #217; recurrence believed biweekly, exact kickoff unconfirmed.'},
+    whenNote:'Confirmed live on #217 (4 Aug 2026, live registration screen). Runs as a round-robin: 6 alliances per group, 5 rounds, each round cycling Registration \u2192 Matching \u2192 Preparation \u2192 Battle \u2192 Settlement.',
+    acts:[
+      {t:'Register the alliance before the window closes', cue:'needs 15+ members registered, Sanctuary Lv.10+'},
+      {t:'Chase individual members to register \u2014 registration is per-player, not per-alliance'},
+      {t:'Post the group draw once matching resolves'},
+      {t:'Post the round result after each Settlement'},
+      {t:'Record the observed kickoff day/time so the schedule can be confirmed'}
+    ], draft:true
+  },
+  {
+    id:'undead', title:'Undead Siege', owners:['trig','hannah'],
+    when:{type:'unknown', text:'No countdown observed yet \u2014 schedule fully unknown.'},
+    whenNote:'Unlocks on server day 15. Requires territory Lv.19 to join. Difficulty is chosen from Lv.1 upward, higher tiers locked until earlier ones are cleared. Enemy power is shown before committing.',
+    acts:[
+      {t:'Confirm which difficulty the alliance is attempting'},
+      {t:'Check enemy power against the alliance\u2019s realistic output before committing'},
+      {t:'Call the participation window in chat'},
+      {t:'Record the schedule when a countdown is next observed'}
+    ], draft:true
+  },
+  {
+    id:'hunt', title:'Hunt Battle', owners:['toad','queen'],
+    when:{type:'unknown', text:'Confirmed a distinct event; day and time not yet recorded.'},
+    whenNote:'Unlocks on server day 17. Confirmed by alliance leadership as its own event, separate from Thief Hunt, Celia\u2019s Hunting and the Death Prison. Details pending.',
+    acts:[
+      {t:'Capture the event panel so the schedule and rules can be recorded'},
+      {t:'Set the day and time below once observed'},
+      {t:'Call rallies; joining costs no Stamina, initiating does'}
+    ], draft:true,
+    warn:'Awaiting details from Toad and Queen. Nothing below this line should be treated as the process until that lands \u2014 the actions are placeholders drawn from the other rally events, not from Hunt Battle itself.'
+  },
+  {
+    id:'nurses', title:'Pandemic Nurses', owners:['connor'],
+    when:{type:'unknown', text:'Schedule not yet recorded.'},
+    whenNote:'Confirmed by leadership as the same event the Containment File called <b>Pandemic Experience</b>. That entry was deleted from the Containment File on 12 Aug 2026 because no evidence for it could be found \u2014 a live screenshot would reinstate it there as well as fill this in.',
+    acts:[
+      {t:'Find or retake a screenshot of the event while it is live'},
+      {t:'Set the day and time below once observed'},
+      {t:'Define the actual duty once the event rules are known'}
+    ], draft:true,
+    warn:'Still the thinnest entry on the board. The name is now resolved, but there is no schedule, no rules and no recorded duty \u2014 only a confirmed identity.'
+  },
+  {
+    id:'duel', title:'Alliance Duel', owners:['kit'],
+    when:{type:'span', days:[1,2,3,4,5,6], text:'Monday to Saturday, one phase per day. Settles 00:00 server nightly.'},
+    whenNote:'Six themed phases, Monday through Saturday, each settling at server midnight. Whoever wins more phases wins the week. Matching runs Sunday. No Duel activity on Sunday.',
+    acts:[
+      {t:'Post the day\u2019s phase and focus each morning'},
+      {t:'Screenshot the standing before nightly settlement', cue:'server 00:00'},
+      {t:'Flag Falcon Quest days \u2014 claims score +25,500 each on Mon / Wed / Fri only'},
+      {t:'Post the week result on Saturday night'}
+    ], draft:true,
+    note:'No active tasks by design \u2014 this is a notices-and-screenshots duty.'
+  },
+  {
+    id:'promo', title:'Promotions &amp; Demotions', owners:['babs'],
+    when:{type:'admin', text:'No game schedule. Cadence to be set by leadership.'},
+    whenNote:'Purely internal. Suggested anchor is the Sunday reset, when Alliance Duel matching runs and the week rolls over, so rank changes land before the new week starts.',
+    acts:[
+      {t:'Review R4 activity against the check-in list'},
+      {t:'Promote candidates flagged by Member Check-Ins'},
+      {t:'Demote or remove confirmed inactives'},
+      {t:'Post rank changes so they are not a surprise'}
+    ], draft:true
+  },
+  {
+    id:'checkin', title:'Member Check-Ins', owners:['shiney'],
+    when:{type:'admin', text:'No game schedule. Cadence to be set by leadership.'},
+    whenNote:'Feeds Promotions &amp; Demotions, so it needs to complete before that runs.',
+    acts:[
+      {t:'Sweep the member list for inactivity'},
+      {t:'Message members who have gone quiet before removing anyone'},
+      {t:'Hand the list to Promotions &amp; Demotions'},
+      {t:'Note anyone whose duty needs covering while they are away'}
+    ], draft:true
+  },
+  {
+    id:'notices', title:'Events Notices', owners:['trig','connor'],
+    when:{type:'span', days:[0,5,6], text:'Weekly notice, plus Friday and Saturday calls.'},
+    whenNote:'The fixed anchors this duty has to cover: Royal City Scramble is Friday 12:00 server on #217 (the in-game rules text says Saturday and is wrong for this kingdom), and the KvK battle lands Saturday.',
+    acts:[
+      {t:'Post the week ahead \u2014 what runs, on which day, at what server time'},
+      {t:'Royal City Scramble call', cue:'Friday 12:00 server'},
+      {t:'Saturday shield notice \u2014 shields up all day until server reset'},
+      {t:'KvK reminder and result'}
+    ], draft:true,
+    policy:'Alliance policy for #217: shields up all day Saturday until server reset, dropping only while personally attacking. Do not gather from resource tiles on Saturday \u2014 troops sitting on a tile are outside the shield.'
+  }
+];
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+const OVR_KEY = 'lpadmin-schedule';
+let OVERRIDES = {};
+function loadOverrides(){
+  let raw = {};
+  try{ raw = JSON.parse(localStorage.getItem(OVR_KEY) || '{}'); }catch(e){ raw = {}; }
+  const out = {};
+  Object.keys(raw).forEach(function(id){
+    const o = raw[id];
+    if(!o || !o.when) return;
+    if(o.scope === 'week' && o.week !== weekKey()) return;  // expired, drop it
+    out[id] = o;
+  });
+  return out;
+}
+function saveOverrides(){
+  try{ localStorage.setItem(OVR_KEY, JSON.stringify(OVERRIDES)); }catch(e){}
+}
+/* precedence: this device's override > baked into the file > code default */
+function effWhen(d){
+  if(OVERRIDES[d.id]) return OVERRIDES[d.id].when;
+  if(OVERRIDES_BAKED[d.id]) return OVERRIDES_BAKED[d.id];
+  return d.when;
+}
+function ovrBadge(d){
+  const o = OVERRIDES[d.id];
+  if(!o) return '';
+  return '<span class="ovr">'+(o.scope === 'week' ? 'changed this week' : 'changed')+'</span>';
+}
+
+function whoChip(key, isBackup){
+  const p = PEOPLE[key];
+  if(!p) return '';
+  const ign = p.ign ? '<span class="ign">'+p.ign+'</span>'
+                    : '<span class="ign">ign?</span>';
+  return '<span class="who'+(isBackup?' backup':'')+'">'+p.name+ign+'</span>';
+}
+
+
+/* ============================================================
+   Schedule editor
+   ------------------------------------------------------------
+   Time is entered as two selects, never a text field. inputmode
+   numeric gives a keypad with no colon key, and a free-text
+   "18:30" invites every wrong format there is.
+   ============================================================ */
+const MODES = [
+  ['weekly',  'Weekly \u2014 one day'],
+  ['daily',   'Daily'],
+  ['interval','Every N days'],
+  ['span',    'Several days a week'],
+  ['unknown', 'No fixed time yet']
+];
+const MM_STEPS = ['00','05','10','15','20','25','30','35','40','45','50','55'];
+
+function selOpts(list, sel){
+  return list.map(function(o){
+    const v = Array.isArray(o) ? o[0] : o, t = Array.isArray(o) ? o[1] : o;
+    return '<option value="'+v+'"'+(String(v)===String(sel)?' selected':'')+'>'+t+'</option>';
+  }).join('');
+}
+function hourOpts(sel){
+  const l = [['','--']];
+  for(let i=0;i<24;i++) l.push([pad(i),pad(i)]);
+  return selOpts(l, sel);
+}
+function todayServerISO(){
+  const s = serverNow();
+  return s.getUTCFullYear()+'-'+pad(s.getUTCMonth()+1)+'-'+pad(s.getUTCDate());
+}
+
+function editorHTML(d){
+  const w = effWhen(d);
+  const o = OVERRIDES[d.id];
+  const times = (w.times || []).slice(0,3);
+  const slots = [0,1,2].map(function(i){
+    const t = times[i] || '';
+    const hh = t ? t.split(':')[0] : '';
+    const mm = t ? t.split(':')[1] : '';
+    return '<div class="tslot"><span class="idx">'+(i+1)+'</span>'+
+      '<select data-f="h'+i+'" aria-label="Slot '+(i+1)+' hour">'+hourOpts(hh)+'</select>'+
+      '<span class="colon">:</span>'+
+      '<select data-f="m'+i+'" aria-label="Slot '+(i+1)+' minute">'+
+        selOpts([['','--']].concat(MM_STEPS.map(function(x){return [x,x];})), mm)+
+      '</select></div>';
+  }).join('');
+  const spanDays = (w.type === 'span' && w.days) ? w.days : [];
+  const dayChecks = [1,2,3,4,5,6,0].map(function(i){
+    return '<label><input type="checkbox" data-f="sd'+i+'"'+
+      (spanDays.indexOf(i) > -1 ? ' checked' : '')+'>'+DAY_FULL[i].slice(0,3)+'</label>';
+  }).join('');
+
+  return '<details class="sched"><summary>Adjust day &amp; time</summary>'+
+  '<div class="sched-body" data-editor="'+d.id+'">'+
+
+  '<div class="sched-row"><span class="sched-lab">Pattern</span>'+
+    '<select data-f="mode">'+selOpts(MODES, w.type === 'admin' ? 'unknown' : w.type)+'</select></div>'+
+
+  '<div class="sched-row" data-row="weekly"><span class="sched-lab">Server day</span>'+
+    '<select data-f="day">'+selOpts([1,2,3,4,5,6,0].map(function(i){return [i,DAY_FULL[i]];}),
+      w.type === 'weekly' ? w.day : 1)+'</select></div>'+
+
+  '<div class="sched-row" data-row="interval"><span class="sched-lab">Repeat every</span>'+
+    '<select data-f="every">'+selOpts([1,2,3,4,5,6,7,14].map(function(n){
+      return [n, n+(n===1?' day':' days')];}), w.type === 'interval' ? w.days : 2)+'</select>'+
+    '<span class="sched-lab" style="margin-top:9px">Counting from (server date)</span>'+
+    '<input type="date" data-f="anchor" value="'+
+      (w.type === 'interval' ? w.anchor : todayServerISO())+'"></div>'+
+
+  '<div class="sched-row" data-row="span"><span class="sched-lab">Server days</span>'+
+    '<div class="daybox">'+dayChecks+'</div></div>'+
+
+  '<div class="sched-row" data-row="times"><span class="sched-lab">Server time \u2014 leave blank to skip</span>'+
+    slots+'</div>'+
+
+  '<div class="sched-row"><span class="sched-lab">Applies</span><div class="scopebox">'+
+    '<label><input type="radio" name="scope-'+d.id+'" data-f="scope" value="always"'+
+      (!o || o.scope === 'always' ? ' checked' : '')+'>'+
+      '<span>From now on<span class="sub2">A permanent move. Use this when the slot itself has changed.</span></span></label>'+
+    '<label><input type="radio" name="scope-'+d.id+'" data-f="scope" value="week"'+
+      (o && o.scope === 'week' ? ' checked' : '')+'>'+
+      '<span>This server week only<span class="sub2">Reverts by itself at the Sunday rollover. Use this for a one-off shift.</span></span></label>'+
+  '</div></div>'+
+
+  '<div class="sched-btns">'+
+    '<button type="button" class="btn-save" data-save="'+d.id+'">Save</button>'+
+    '<button type="button" class="btn-reset" data-clear="'+d.id+'">Back to default</button>'+
+  '</div>'+
+  '<p class="sched-note">Saves to <b>this browser only</b>. Everyone else still sees the default '+
+  'until it is baked into the file \u2014 see the button at the bottom of this tab.</p>'+
+  '</div></details>';
+}
+
+function syncEditorRows(box){
+  const mode = box.querySelector('[data-f="mode"]').value;
+  const show = {
+    weekly:  ['weekly','times'],
+    daily:   ['times'],
+    interval:['interval','times'],
+    span:    ['span'],
+    unknown: []
+  }[mode] || [];
+  box.querySelectorAll('[data-row]').forEach(function(r){
+    r.classList.toggle('hide', show.indexOf(r.getAttribute('data-row')) === -1);
+  });
+}
+
+function readEditor(box){
+  const g = function(f){ const el = box.querySelector('[data-f="'+f+'"]'); return el ? el.value : ''; };
+  const mode = g('mode');
+  const times = [0,1,2].map(function(i){
+    const h = g('h'+i), m = g('m'+i);
+    return (h !== '' && m !== '') ? h+':'+m : null;
+  }).filter(Boolean).sort();
+
+  if(mode === 'weekly')   return {type:'weekly', day:Number(g('day')), times:times};
+  if(mode === 'daily')    return {type:'daily', times:times};
+  if(mode === 'interval') return {type:'interval', anchor:g('anchor'),
+                                  days:Number(g('every')), times:times};
+  if(mode === 'span'){
+    const days = [1,2,3,4,5,6,0].filter(function(i){
+      const el = box.querySelector('[data-f="sd'+i+'"]'); return el && el.checked;
+    });
+    return {type:'span', days:days, text:'Set by leadership.'};
+  }
+  return {type:'unknown', text:'No fixed time set.'};
+}
+
+function bindEditors(){
+  document.querySelectorAll('[data-editor]').forEach(function(box){
+    syncEditorRows(box);
+    box.querySelector('[data-f="mode"]').addEventListener('change', function(){
+      syncEditorRows(box);
+    });
+  });
+  document.querySelectorAll('[data-save]').forEach(function(b){
+    b.addEventListener('click', function(){
+      const id = b.getAttribute('data-save');
+      const box = document.querySelector('[data-editor="'+id+'"]');
+      const scopeEl = box.querySelector('[data-f="scope"]:checked');
+      const scope = scopeEl ? scopeEl.value : 'always';
+      const when = readEditor(box);
+      if((when.type === 'weekly' || when.type === 'daily' || when.type === 'interval')
+         && !when.times.length){
+        alert('That pattern needs at least one time. Set an hour and a minute, or choose "No fixed time yet".');
+        return;
+      }
+      OVERRIDES[id] = {when:when, scope:scope, week:weekKey()};
+      saveOverrides();
+      renderAll();
+      const card = document.getElementById('duty-'+id);
+      if(card) card.scrollIntoView({block:'center'});
+    });
+  });
+  document.querySelectorAll('[data-clear]').forEach(function(b){
+    b.addEventListener('click', function(){
+      const id = b.getAttribute('data-clear');
+      delete OVERRIDES[id];
+      saveOverrides();
+      renderAll();
+    });
+  });
+}
+
+function exportOverrides(){
+  const out = {};
+  Object.keys(OVERRIDES).forEach(function(id){ out[id] = OVERRIDES[id].when; });
+  DUTIES.forEach(function(d){
+    if(!out[d.id] && OVERRIDES_BAKED[d.id]) out[d.id] = OVERRIDES_BAKED[d.id];
+  });
+  return 'const OVERRIDES_BAKED = ' + JSON.stringify(out, null, 2) + ';';
+}
+
+function whenBlock(d){
+  const w = effWhen(d);
+  if(w.type === 'unknown'){
+    return '<div class="when unknown"><span class="lbl">Schedule</span>'+
+           (w.text||'Not set.')+'</div>';
+  }
+  if(w.type === 'admin'){
+    return '<div class="when"><span class="lbl">Cadence</span>'+w.text+'</div>';
+  }
+  if(w.type === 'span'){
+    const names = w.days.map(function(i){ return DAY_FULL[i]; }).join(', ');
+    return '<div class="when live"><span class="lbl">Server days</span>'+
+           '<span class="srv">'+names+'</span> &mdash; '+w.text+'</div>';
+  }
+  if(!w.times || !w.times.length){
+    return '<div class="when unknown"><span class="lbl">Schedule</span>'+
+           'Runs '+(w.type === 'daily' ? 'daily' : 'on a set cycle')+
+           ', but no time has been set yet. Use <b>Adjust day &amp; time</b> below.</div>';
+  }
+  const rows = w.times.map(function(t){
+    let next = null;
+    if(w.type === 'weekly')   next = nextWeekly(w.day, t);
+    if(w.type === 'interval') next = nextInterval(w.anchor, t, w.days);
+    if(w.type === 'daily')    next = nextDaily(t);
+    if(!next) return '<span class="srv">'+t+' server</span>';
+    return '<span class="srv">'+t+' server</span> = <span class="lcl">'+
+           localHM(next)+'</span> your time, next on '+localDayName(next)+
+           ' ' + next.getDate() + ' ' +
+           next.toLocaleString(undefined,{month:'short'});
+  }).join('<br>');
+  return '<div class="when live"><span class="lbl">Next occurrence</span>'+rows+'</div>';
+}
+
+function weekKey(){
+  const s = serverNow();
+  const t = new Date(Date.UTC(s.getUTCFullYear(), s.getUTCMonth(), s.getUTCDate()));
+  t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay()||7));
+  const y0 = new Date(Date.UTC(t.getUTCFullYear(),0,1));
+  const wk = Math.ceil((((t-y0)/86400000)+1)/7);
+  return t.getUTCFullYear()+'W'+pad(wk);
+}
+const CHECK_KEY = 'lpadmin-checks';
+function loadChecks(){
+  try{
+    const raw = JSON.parse(localStorage.getItem(CHECK_KEY) || '{}');
+    if(raw.week !== weekKey()) return {};
+    return raw.done || {};
+  }catch(e){ return {}; }
+}
+function saveChecks(done){
+  try{ localStorage.setItem(CHECK_KEY, JSON.stringify({week:weekKey(), done:done})); }
+  catch(e){}
+}
+let CHECKS = loadChecks();
+
+function renderDuties(){
+  const host = document.getElementById('dutyList');
+  host.innerHTML = DUTIES.map(function(d){
+    const ew = effWhen(d);
+    const noTime = (ew.times && !ew.times.length && ew.type !== 'span');
+    const tag = (ew.type === 'unknown' || noTime) ? '<span class="tag pending">Schedule pending</span>'
+              : ew.type === 'admin' ? '<span class="tag admin">Internal</span>'
+              : '<span class="tag ok">Scheduled</span>';
+    const owners = (d.owners||[]).map(function(k){ return whoChip(k,false); }).join('') +
+                   (d.backups||[]).map(function(k){ return whoChip(k,true); }).join('');
+    const acts = (d.acts||[]).map(function(a,i){
+      const id = d.id+'-'+i;
+      const on = !!CHECKS[id];
+      return '<li'+(on?' class="done"':'')+'>'+
+        '<input type="checkbox" id="'+id+'" data-act="'+id+'"'+(on?' checked':'')+'>'+
+        '<label for="'+id+'">'+a.t+(a.cue?'<span class="cue">'+a.cue+'</span>':'')+'</label></li>';
+    }).join('');
+    return '<article class="duty" id="duty-'+d.id+'">'+
+      '<div class="duty-head"><h3>'+d.title+ovrBadge(d)+'</h3>'+tag+'</div>'+
+      '<div class="owners">'+owners+'</div>'+
+      whenBlock(d)+
+      (d.whenNote ? '<p class="sec-note" style="margin:9px 0 0;font-size:12.5px">'+d.whenNote+'</p>' : '')+
+      (d.note ? '<p class="sec-note" style="margin:7px 0 0;font-size:12.5px">'+d.note+'</p>' : '')+
+      (d.warn ? '<div class="warn"><b>Unresolved:</b> '+d.warn+'</div>' : '')+
+      (d.policy ? '<div class="policy"><b>Standing policy:</b> '+d.policy+'</div>' : '')+
+      (d.positions ? '<div class="seats"><div class="seats-head">Seats to fill</div>'+
+        d.positions.map(function(s){
+          return '<div class="seat"><b>'+s.n+'</b> &mdash; '+s.d+'</div>';
+        }).join('')+'</div>' : '')+
+      editorHTML(d)+
+      '<p class="acts-head">Actions'+(d.draft?' &mdash; draft, confirm before relying on it':'')+'</p>'+
+      '<ul class="acts">'+acts+'</ul>'+
+    '</article>';
+  }).join('');
+
+  host.querySelectorAll('input[data-act]').forEach(function(cb){
+    cb.addEventListener('change', function(){
+      const id = cb.getAttribute('data-act');
+      if(cb.checked) CHECKS[id] = 1; else delete CHECKS[id];
+      saveChecks(CHECKS);
+      cb.closest('li').classList.toggle('done', cb.checked);
+    });
+  });
+}
+
+function renderPeople(){
+  const map = {};
+  DUTIES.forEach(function(d){
+    (d.owners||[]).forEach(function(k){ (map[k]=map[k]||[]).push({d:d,role:'owner'}); });
+    (d.backups||[]).forEach(function(k){ (map[k]=map[k]||[]).push({d:d,role:'backup'}); });
+  });
+  const order = Object.keys(PEOPLE).filter(function(k){ return map[k]; });
+  document.getElementById('peopleList').innerHTML = order.map(function(k){
+    const p = PEOPLE[k];
+    const lis = map[k].map(function(e){
+      const solo = e.role === 'owner' && (e.d.owners||[]).length === 1 && !(e.d.backups||[]).length;
+      return '<li>'+e.d.title+
+        (e.role === 'backup' ? ' <span class="sec">(backup)</span>' : '')+
+        (solo ? ' <span class="sec">&mdash; sole owner, no backup</span>' : '')+
+      '</li>';
+    }).join('');
+    return '<div class="person"><h3>'+p.name+'</h3>'+
+      '<div class="ign-line">'+(p.ign ? p.ign : 'in-game name not supplied')+'</div>'+
+      '<ul>'+lis+'</ul></div>';
+  }).join('');
+}
+
+function renderWeek(){
+  const today = serverWeekday();
+  const buckets = [[],[],[],[],[],[],[]];
+  DUTIES.forEach(function(d){
+    const w = effWhen(d);
+    const ownerNames = (d.owners||[]).map(function(k){ return PEOPLE[k].name; }).join(' & ');
+    if(w.type === 'weekly' && w.times.length){
+      w.times.forEach(function(t){ buckets[w.day].push({t:t, title:d.title, o:ownerNames}); });
+    } else if(w.type === 'span'){
+      w.days.forEach(function(i){ buckets[i].push({t:'', title:d.title, o:ownerNames}); });
+    } else if(w.type === 'daily' && w.times.length){
+      for(let i=0;i<7;i++) w.times.forEach(function(t){
+        buckets[i].push({t:t, title:d.title, o:ownerNames});
+      });
+    }
+  });
+  /* Cheese Trap is a 48h cycle, not weekly — place its next two hits by date. */
+  DUTIES.forEach(function(d){
+    const w = effWhen(d);
+    if(w.type !== 'interval' || !w.times.length) return;
+    const ct = {when:w, title:d.title, owners:d.owners};
+    let t = nextInterval(w.anchor, w.times[0], w.days);
+    for(let i=0;i<4;i++){
+      const srv = new Date(t.getTime() + SERVER_OFFSET_MINUTES*60000);
+      buckets[srv.getUTCDay()].push({t:w.times[0],
+        title:ct.title+' ('+w.days*24+'h cycle)',
+        o:(ct.owners||[]).map(function(k){return PEOPLE[k].name;}).join(' & ')});
+      t = new Date(t.getTime() + w.days*86400000);
+    }
+  });
+
+  document.getElementById('weekGrid').innerHTML = [1,2,3,4,5,6,0].map(function(i){
+    const list = buckets[i]
+      .sort(function(a,b){ return (a.t||'zz').localeCompare(b.t||'zz'); })
+      .map(function(e){
+        return '<li>'+(e.t?'<span class="t">'+e.t+'</span> ':'')+e.title+
+               '<br><span class="o">'+e.o+'</span></li>';
+      }).join('');
+    return '<div class="daycol'+(i===today?' today':'')+'">'+
+      (i===today?'<div class="dmark">Today (server)</div>':'')+
+      '<h4>'+DAY_FULL[i]+'</h4>'+
+      (list ? '<ul>'+list+'</ul>' : '<div class="empty">Nothing scheduled.</div>')+
+    '</div>';
+  }).join('');
+}
+
+/* ---------- clocks ---------- */
+function tickClocks(){
+  const s = serverNow(), l = new Date();
+  document.getElementById('srvClock').textContent =
+    pad(s.getUTCHours())+':'+pad(s.getUTCMinutes())+':'+pad(s.getUTCSeconds());
+  document.getElementById('srvDate').textContent =
+    DAY_FULL[s.getUTCDay()]+' '+s.getUTCDate()+' '+
+    s.toLocaleString(undefined,{month:'short',timeZone:'UTC'});
+  document.getElementById('lclClock').textContent =
+    pad(l.getHours())+':'+pad(l.getMinutes())+':'+pad(l.getSeconds());
+  document.getElementById('lclDate').textContent =
+    DAY_FULL[l.getDay()]+' '+l.getDate()+' '+l.toLocaleString(undefined,{month:'short'});
+}
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(b){ b.setAttribute('aria-selected','false'); });
+    btn.setAttribute('aria-selected','true');
+    document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
+    document.getElementById(btn.getAttribute('data-view')).classList.add('active');
+  });
+});
+
+/* ---------- theme: Auto / Light / Dark, shares the Containment File's key ---------- */
+const THEME_KEY = 'lppc-theme';
+function storedMode(){
+  try{ return localStorage.getItem(THEME_KEY) || 'auto'; }catch(e){ return 'auto'; }
+}
+function applyTheme(mode){
+  let eff = mode;
+  if(mode === 'auto'){
+    const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
+    eff = (mq && mq.matches) ? 'light' : 'dark';
+  }
+  document.documentElement.setAttribute('data-theme', eff);
+  const b = document.getElementById('themeBtn');
+  if(b) b.textContent = 'THEME: ' + mode.toUpperCase();
+}
+document.getElementById('themeBtn').addEventListener('click', function(){
+  const order = ['auto','light','dark'];
+  const next = order[(order.indexOf(storedMode())+1) % 3];
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+  applyTheme(next);
+});
+if(window.matchMedia){
+  const mq = window.matchMedia('(prefers-color-scheme: light)');
+  const onChange = function(){ if(storedMode() === 'auto') applyTheme('auto'); };
+  if(mq.addEventListener) mq.addEventListener('change', onChange);
+  else if(mq.addListener) mq.addListener(onChange);
+}
+applyTheme(storedMode());
+
+/* ---------- misc ---------- */
+document.getElementById('clearChecks').addEventListener('click', function(){
+  CHECKS = {}; saveChecks(CHECKS); renderAll();
+});
+document.getElementById('exportBtn').addEventListener('click', function(){
+  const box = document.getElementById('exportBox');
+  box.value = exportOverrides();
+  box.style.display = 'block';
+  box.select();
+  try{ document.execCommand('copy'); }catch(e){}
+});
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', function(){
+  toTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+toTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+function renderAll(){
+  renderDuties();
+  bindEditors();
+  renderPeople();
+  renderWeek();
+}
+OVERRIDES = loadOverrides();
+saveOverrides();               // drops any week-scoped overrides that have expired
+renderAll();
+tickClocks();
+setInterval(tickClocks, 1000);
+</script>
+</body>
+</html>
