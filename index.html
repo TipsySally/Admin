@@ -24,6 +24,20 @@
     --info-1:rgba(120,190,255,.07); --info-2:rgba(120,190,255,.24);
     --accent:#63cfe0; --accent-strong:#8fe4f0; --accent-tint:rgba(99,207,224,.14);
     --on-accent:#080a06; --info-text:#9fd0ff; --err-text:#ffb3b3;
+
+    /* --- semantic hue families -------------------------------------
+       One hue, one meaning:
+         go     confirmed schedule       wait   schedule pending
+         stop   unresolved problem       rule   standing policy
+         seat   seats to be filled       act    interactive control
+       Dark keeps these low-chroma on purpose. Saturated colour on a
+       near-black field halates and the text edges blur.               */
+    --go-text:#31a527; --go-bg:rgba(61,206,48,0.11); --go-edge:rgba(49,165,39,0.68);
+    --wait-text:#b4862a; --wait-bg:rgba(206,153,48,0.11); --wait-edge:rgba(180,134,42,0.69);
+    --stop-text:#d76655; --stop-bg:rgba(206,69,48,0.11); --stop-edge:rgba(215,102,85,0.72);
+    --rule-text:#5a88d8; --rule-bg:rgba(48,106,206,0.11); --rule-edge:rgba(90,136,216,0.72);
+    --seat-text:#d858a3; --seat-bg:rgba(206,48,140,0.11); --seat-edge:rgba(216,88,163,0.73);
+    --act-text:#a26edd; --act-bg:rgba(122,48,206,0.11); --act-edge:rgba(162,110,221,0.73);
   }
   html[data-theme="light"]{
     --bg:#f6f3e9; --panel:#e9e4d3; --panel-2:#d5ccb2; --panel-3:#f0ecdf;
@@ -41,6 +55,16 @@
     --info-1:rgba(30,86,120,.10); --info-2:rgba(30,86,120,.26);
     --accent:#0e5f74; --accent-strong:#0a4657; --accent-tint:rgba(14,95,116,.13);
     --on-accent:#f6f3e8; --info-text:#1e5678; --err-text:#8c2418;
+
+    /* Light carries the chroma. On a parchment field a warm palette
+       collapses into itself, so each family gets a genuinely distinct
+       hue rather than a lighter shade of the same brown. */
+    --go-text:#106f07; --go-bg:rgba(34,239,15,0.14); --go-edge:rgba(16,111,7,0.75);
+    --wait-text:#7f5708; --wait-bg:rgba(239,164,15,0.14); --wait-edge:rgba(127,87,8,0.76);
+    --stop-text:#ab200b; --stop-bg:rgba(239,45,15,0.14); --stop-edge:rgba(171,32,11,0.66);
+    --rule-text:#0c50c4; --rule-bg:rgba(15,97,239,0.14); --rule-edge:rgba(12,80,196,0.69);
+    --seat-text:#a70b66; --seat-bg:rgba(239,15,146,0.14); --seat-edge:rgba(167,11,102,0.63);
+    --act-text:#6f0ede; --act-bg:rgba(120,15,239,0.14); --act-edge:rgba(111,14,222,0.62);
   }
 
   *{box-sizing:border-box;}
@@ -100,7 +124,10 @@
 
   /* ---------- duty cards ---------- */
   .duty{background:var(--panel);border:1px solid var(--line);border-radius:10px;
-    padding:14px 15px;margin-bottom:14px;}
+    padding:14px 15px;margin-bottom:14px;border-top:3px solid var(--edge-2);}
+  .duty.is-go{border-top-color:var(--go-edge);}
+  .duty.is-wait{border-top-color:var(--wait-edge);}
+  .duty.is-admin{border-top-color:var(--rule-edge);}
   .duty-head{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;
     justify-content:space-between;}
   .duty h3{margin:0;font-size:17px;}
@@ -114,18 +141,23 @@
 
   .tag{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.11em;
     text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap;}
-  .tag.ok{background:var(--green);color:var(--on-accent);}
+  .tag.ok{background:var(--go-bg);color:var(--go-text);border:1px solid var(--go-edge);}
   .tag.admin{background:var(--tint-3);color:var(--text);border:1px solid var(--edge-2);}
-  .tag.pending{background:none;color:var(--muted);border:1px dashed var(--edge-3);}
+  .tag.pending{background:var(--wait-bg);color:var(--wait-text);
+    border:1px dashed var(--wait-edge);}
 
   .when{margin:11px 0 0;padding:9px 11px;background:var(--well-1);border-radius:7px;
-    border-left:3px solid var(--edge-2);font-size:13.5px;}
-  .when.live{border-left-color:var(--green);}
-  .when.unknown{border-left-color:var(--amber);}
-  .when .srv{font-family:'Courier New',monospace;color:var(--green-bright);}
-  .when .lcl{font-family:'Courier New',monospace;color:var(--accent-strong);}
-  .when .lbl{color:var(--muted);font-size:11px;font-family:'Courier New',monospace;
+    border-left:4px solid var(--edge-2);font-size:13.5px;}
+  .when.live{border-left-color:var(--go-edge);background:var(--go-bg);}
+  .when.unknown{border-left-color:var(--wait-edge);background:var(--wait-bg);}
+  .when .srv{font-family:'Courier New',monospace;color:var(--go-text);font-weight:600;}
+  .when .lcl{font-family:'Courier New',monospace;color:var(--rule-text);font-weight:600;}
+  .when .lbl{font-size:11px;font-family:'Courier New',monospace;
     letter-spacing:.11em;text-transform:uppercase;display:block;margin-bottom:2px;}
+  .when.live .lbl{color:var(--go-text);}
+  .when.unknown .lbl{color:var(--wait-text);}
+  .when .lbl{color:var(--muted);}
+  .when.live .lbl,.when.unknown .lbl{opacity:.95;}
 
   .acts{margin:12px 0 0;padding:0;list-style:none;}
   .acts li{display:flex;gap:11px;align-items:flex-start;padding:8px 0;
@@ -140,12 +172,12 @@
   .acts-head{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--muted);margin:13px 0 0;}
 
-  .warn{margin:11px 0 0;padding:9px 11px;background:var(--hl-2);
-    border:1px solid var(--hl-4);border-radius:7px;font-size:12.5px;}
-  .warn b{color:var(--amber);}
-  .policy{margin:11px 0 0;padding:9px 11px;background:var(--info-1);
-    border:1px solid var(--info-2);border-radius:7px;font-size:12.5px;}
-  .policy b{color:var(--info-text);}
+  .warn{margin:11px 0 0;padding:9px 11px;background:var(--stop-bg);
+    border:1px solid var(--stop-edge);border-left-width:4px;border-radius:7px;font-size:12.5px;}
+  .warn b{color:var(--stop-text);}
+  .policy{margin:11px 0 0;padding:9px 11px;background:var(--rule-bg);
+    border:1px solid var(--rule-edge);border-left-width:4px;border-radius:7px;font-size:12.5px;}
+  .policy b{color:var(--rule-text);}
 
   /* ---------- owner view ---------- */
   .person{background:var(--panel);border:1px solid var(--line);border-radius:10px;
@@ -156,23 +188,35 @@
   .person ul{margin:0;padding-left:19px;font-size:13.5px;}
   .person li{padding:2px 0;}
   .person li .sec{color:var(--muted);font-size:12px;}
+  .person li .gap{color:var(--stop-text);font-size:12px;font-weight:600;}
 
   /* ---------- week view ---------- */
   .weekgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
   .daycol{background:var(--panel);border:1px solid var(--line);border-radius:10px;
     padding:11px 12px;}
-  .daycol.today{border-color:var(--green);background:var(--panel-2);}
+  .daycol.today{border-color:var(--go-edge);background:var(--go-bg);}
+  .daycol .dmark{color:var(--go-text);}
   .daycol h4{margin:0 0 2px;font-size:14px;}
   .daycol .dmark{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--green-bright);}
   .daycol ul{margin:8px 0 0;padding:0;list-style:none;font-size:12.5px;}
   .daycol li{padding:5px 0;border-top:1px solid var(--tint-1);}
   .daycol li:first-child{border-top:none;}
-  .daycol .t{font-family:'Courier New',monospace;color:var(--accent-strong);font-size:11.5px;}
+  .daycol .t{font-family:'Courier New',monospace;color:var(--rule-text);font-size:11.5px;
+    font-weight:600;}
   .daycol .o{color:var(--muted);font-size:11px;}
   .daycol .empty{color:var(--muted);font-size:12px;padding-top:6px;}
 
   .sec-note{color:var(--muted);font-size:13px;margin:0 0 15px;}
+  .legend{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px;}
+  .legend span{font-size:11.5px;padding:4px 10px;border-radius:20px;
+    border:1px solid;border-left-width:4px;}
+  .lg-go{color:var(--go-text);background:var(--go-bg);border-color:var(--go-edge);}
+  .lg-wait{color:var(--wait-text);background:var(--wait-bg);border-color:var(--wait-edge);}
+  .lg-stop{color:var(--stop-text);background:var(--stop-bg);border-color:var(--stop-edge);}
+  .lg-rule{color:var(--rule-text);background:var(--rule-bg);border-color:var(--rule-edge);}
+  .lg-seat{color:var(--seat-text);background:var(--seat-bg);border-color:var(--seat-edge);}
+  .lg-act{color:var(--act-text);background:var(--act-bg);border-color:var(--act-edge);}
   h2.vh{font-size:18px;margin:0 0 4px;}
   .reset-row{margin:16px 0 0;font-size:12px;color:var(--muted);}
   .reset-row button{background:none;border:1px solid var(--edge-2);color:var(--muted);
@@ -183,24 +227,26 @@
   footer a{color:var(--accent);}
 
   /* ---------- positions (seats that must be filled) ---------- */
-  .seats{margin:11px 0 0;padding:9px 11px;background:var(--tint-1);
-    border:1px solid var(--edge);border-radius:7px;}
+  .seats{margin:11px 0 0;padding:9px 11px;background:var(--seat-bg);
+    border:1px solid var(--seat-edge);border-left-width:4px;border-radius:7px;}
   .seats-head{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    text-transform:uppercase;color:var(--seat-text);margin-bottom:5px;}
   .seat{font-size:13px;padding:3px 0;}
-  .seat b{color:var(--accent-strong);}
+  .seat b{color:var(--seat-text);}
 
   /* ---------- schedule editor ---------- */
-  details.sched{margin:11px 0 0;border:1px solid var(--edge);border-radius:7px;
-    background:var(--tint-1);}
-  details.sched > summary{cursor:pointer;padding:10px 12px;font-size:12.5px;
-    color:var(--muted);min-height:44px;display:flex;align-items:center;}
-  details.sched[open] > summary{border-bottom:1px solid var(--edge);color:var(--text);}
+  details.sched,details.cal{margin:9px 0 0;border:1px solid var(--act-edge);
+    border-left-width:4px;border-radius:7px;background:var(--act-bg);}
+  details.sched > summary,details.cal > summary{cursor:pointer;padding:10px 12px;
+    font-size:12.5px;color:var(--act-text);font-weight:600;min-height:44px;
+    display:flex;align-items:center;}
+  details.sched[open] > summary,details.cal[open] > summary{
+    border-bottom:1px solid var(--act-edge);}
   .sched-body{padding:12px;}
   .sched-row{margin-bottom:11px;}
   .sched-row.hide{display:none;}
   .sched-lab{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.13em;
-    text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+    text-transform:uppercase;color:var(--act-text);display:block;margin-bottom:4px;}
   .sched-body select,.sched-body input[type=date]{background:var(--well-2);color:var(--text);
     border:1px solid var(--edge-2);border-radius:6px;padding:9px 8px;font-size:15px;
     font-family:inherit;min-height:44px;max-width:100%;}
@@ -223,19 +269,16 @@
   .sched-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
   .sched-btns button{flex:1 1 auto;min-height:44px;border-radius:6px;font-family:inherit;
     font-size:14px;cursor:pointer;padding:10px 14px;}
-  .btn-save{background:var(--green);color:var(--on-accent);border:1px solid var(--green);}
+  .btn-save{background:var(--green);color:var(--on-accent);border:1px solid var(--green);
+    font-weight:600;}
   .btn-reset{background:none;color:var(--muted);border:1px solid var(--edge-2);}
   .btn-reset:hover{color:var(--text);border-color:var(--edge-3);}
   .sched-note{font-size:11.5px;color:var(--muted);margin:10px 0 0;}
   .ovr{display:inline-block;font-family:'Courier New',monospace;font-size:10px;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--amber);
-    border:1px dashed var(--hl-5);border-radius:4px;padding:2px 7px;margin-left:6px;}
+    letter-spacing:.1em;text-transform:uppercase;color:var(--act-text);
+    background:var(--act-bg);border:1px dashed var(--act-edge);border-radius:4px;
+    padding:2px 7px;margin-left:6px;}
   /* ---------- calendar export ---------- */
-  details.cal{margin:9px 0 0;border:1px solid var(--edge);border-radius:7px;
-    background:var(--tint-1);}
-  details.cal > summary{cursor:pointer;padding:10px 12px;font-size:12.5px;
-    color:var(--muted);min-height:44px;display:flex;align-items:center;}
-  details.cal[open] > summary{border-bottom:1px solid var(--edge);color:var(--text);}
   .cal-body{padding:12px;}
   .cal-body select{background:var(--well-2);color:var(--text);border:1px solid var(--edge-2);
     border-radius:6px;padding:9px 8px;font-size:15px;font-family:inherit;min-height:44px;
@@ -244,9 +287,10 @@
   .cal-btns button,.cal-btns a{flex:1 1 auto;min-height:44px;border-radius:6px;
     font-family:inherit;font-size:14px;cursor:pointer;padding:11px 14px;text-align:center;
     text-decoration:none;display:flex;align-items:center;justify-content:center;}
-  .btn-ics{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);}
-  .btn-gcal{background:none;color:var(--accent);border:1px solid var(--edge-2);}
-  .btn-gcal:hover{border-color:var(--accent);}
+  .btn-ics{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);
+    font-weight:600;}
+  .btn-gcal{background:none;color:var(--act-text);border:1px solid var(--act-edge);}
+  .btn-gcal:hover{border-color:var(--act-text);}
   .cal-none{font-size:12.5px;color:var(--muted);}
   .cal-note{font-size:11.5px;color:var(--muted);margin:10px 0 0;}
 
@@ -322,6 +366,14 @@
   <h2 class="vh">Duty roster</h2>
   <p class="sec-note">One card per assignment. Tick boxes are a personal to-do &mdash; they save to
     <b>this browser only</b> and reset each server week. Nobody else sees them.</p>
+  <div class="legend">
+    <span class="lg-go">Confirmed time</span>
+    <span class="lg-wait">Time pending</span>
+    <span class="lg-stop">Unresolved</span>
+    <span class="lg-rule">Standing policy</span>
+    <span class="lg-seat">Seats to fill</span>
+    <span class="lg-act">Something you can change</span>
+  </div>
   <div id="dutyList"></div>
   <div class="reset-row">
     <button type="button" id="clearChecks">Clear this week's ticks</button>
@@ -1066,7 +1118,9 @@ function renderDuties(){
         '<input type="checkbox" id="'+id+'" data-act="'+id+'"'+(on?' checked':'')+'>'+
         '<label for="'+id+'">'+a.t+(a.cue?'<span class="cue">'+a.cue+'</span>':'')+'</label></li>';
     }).join('');
-    return '<article class="duty" id="duty-'+d.id+'">'+
+    const cls = (ew.type === 'unknown' || noTime) ? 'is-wait'
+              : ew.type === 'admin' ? 'is-admin' : 'is-go';
+    return '<article class="duty '+cls+'" id="duty-'+d.id+'">'+
       '<div class="duty-head"><h3>'+d.title+ovrBadge(d)+'</h3>'+tag+'</div>'+
       '<div class="owners">'+owners+'</div>'+
       whenBlock(d)+
@@ -1108,7 +1162,7 @@ function renderPeople(){
       const solo = e.role === 'owner' && (e.d.owners||[]).length === 1 && !(e.d.backups||[]).length;
       return '<li>'+e.d.title+
         (e.role === 'backup' ? ' <span class="sec">(backup)</span>' : '')+
-        (solo ? ' <span class="sec">&mdash; sole owner, no backup</span>' : '')+
+        (solo ? ' <span class="gap">&mdash; sole owner, no backup</span>' : '')+
       '</li>';
     }).join('');
     return '<div class="person"><h3>'+p.name+'</h3>'+
